@@ -38,8 +38,11 @@ plan_count_table_after_exclusions <- filtered_data %>%
 print(plan_count_table_after_exclusions, n=27)
 
 
+# Load your dataset (assuming it's in the same directory)
+full_ma_data <- readRDS("full_ma_data.rds")
+
 # Remove special needs plans (SNP), employer group plans (eghp), and all "800-series" plans
-filtered_data <- subset(full_ma_data.rds, 
+filtered_data <- subset(full_ma_data, 
                         !(plan_type %in% c("SNP", "eghp") | grepl("^800", plan_type)))
 
 # Create a table of the count of plans under each plan type in each year
